@@ -3,6 +3,77 @@ body {
     background-color: rgb(241, 238, 238);
 }
 
+.logoBlock{
+    text-align: center;
+}
+
+.checkBlock{
+    background-color: white;
+    width: 300px;
+    padding: 10px 0px;
+    border-radius: 10px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.5);
+    margin-right: 20px;
+    height: 215px;
+}
+
+.titleCheckBlock{
+    text-align: center;
+}
+
+.inputCheckBlock{
+    margin-left: 10px;
+}
+
+.ticketsBlock{
+    width: 500px;
+}
+.freeBlock{
+    text-align: center;
+    width: 50%;
+    border-top: 1px solid rgb(170, 170, 243);
+    border-left: 1px solid rgb(170, 170, 243);
+    border-bottom: 1px solid rgb(170, 170, 243);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.freeBlock:hover{
+    background-color: rgb(170, 170, 243);
+    cursor: pointer;
+}
+
+.fasterBlock:hover{
+    background-color: rgb(170, 170, 243);
+    cursor: pointer;
+}
+.fasterBlock{
+    text-align: center;
+    width: 50%;
+    border: 1px solid rgb(170, 170, 243);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.timeCheckBlock{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.5);
+}
+
+
 .HoverDiv {
     width: 100%;
     height: 30px;
@@ -14,4 +85,10 @@ body {
 
 .HoverDiv:hover {
     background-color: rgb(231, 226, 226);
+}
+
+
+.mainBlock{
+    display: flex;
+    justify-content: center;
 }

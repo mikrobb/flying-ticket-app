@@ -21,49 +21,63 @@ function App() {
   useEffect(() => {
     fetch('https://front-test.beta.aviasales.ru/search')
     .then((data) => data.json())
-    .then((json) => setIdSearch(json));
+    .then((json) => {
+      fetch(`https://front-test.beta.aviasales.ru/tickets?searchId=${json.searchId}`)
+        .then((data) => data.json())
+        .then((json) => dispatch({ type: 'searchTickets', payload: json.tickets }));
+    });
   }, []);
 
-  useEffect(() => {
-    fetch(`https://front-test.beta.aviasales.ru/tickets?searchId=${idSearch.searchId}`)
-    .then((data) => data.json())
-    .then((json) => dispatch({ type: 'searchTickets', payload: json })); 
-  }, [])
-
-
+  console.log()
   
- 
-  console.log(idSearch.searchId);
-  console.log(tickets)
 
-  
+  function test(){
+    console.log(tickets.length <= 20)
+  }
 
 
 
   if (!tickets) return <div>Loading...</div>;
   return (
     <>
-      <div style={{textAlign : 'center'}}><img src={AvioLogo} alt="" /></div>
-      <div>
-        <div style={{ backgroundColor: 'white' , width: '300px' , padding: "10px 0px"}}>
-          <p style={{textAlign:'center'}}>КОЛИЧЕСТВО ПЕРЕСАДОК</p>
+      <div className='logoBlock'><img src={AvioLogo} alt="" /></div>
+      <div className='mainBlock'>
+        <div className='checkBlock'>
+          <p className='titleCheckBlock'>КОЛИЧЕСТВО ПЕРЕСАДОК</p>
           <div className='HoverDiv'>
-          <input style={{marginLeft : '10px'}} name='All' type="checkbox" /> <label htmlFor='All'>Все</label>
+          <input className='inputCheckBlock'  name='All' type="checkbox" /> <label htmlFor='All'>Все</label>
           </div>
           <div className='HoverDiv'>
-          <input style={{marginLeft : '10px'}} name='BezPerecadki' type="checkbox" /> <label htmlFor='BezPerecadki'>Без пересадок</label>
+          <input className='inputCheckBlock'  name='BezPerecadki' type="checkbox" /> <label htmlFor='BezPerecadki'>Без пересадок</label>
           </div>
           <div className='HoverDiv'>
-          <input style={{marginLeft : '10px'}} name='1' type="checkbox" /> <label htmlFor='1'>1 пересадка</label>
+          <input className='inputCheckBlock'  name='1' type="checkbox" /> <label htmlFor='1'>1 пересадка</label>
           </div>
           <div className='HoverDiv'>
-          <input style={{marginLeft : '10px'}} name='2' type="checkbox" /> <label htmlFor='2'>2 пересадки</label>
+          <input className='inputCheckBlock'  name='2' type="checkbox" /> <label htmlFor='2'>2 пересадки</label>
           </div>
           <div className='HoverDiv'>
-          <input style={{marginLeft : '10px'}} name='3' type="checkbox" /> <label htmlFor='3'>3 пересадки</label>
+          <input className='inputCheckBlock'  name='3' type="checkbox" /> <label htmlFor='3'>3 пересадки</label>
           </div>
         </div>
-        <div></div>
+        <div>
+          <div className='ticketsBlock'> 
+            <div className='timeCheckBlock'>
+              <div className='freeBlock'>САМЫЙ ДЕШЕВЫЙ</div>
+              <div className='fasterBlock'>САМЫЙ БЫСТРЫЙ</div>
+            </div>
+            <div>
+              {tickets.filter((ticket) => ticket.length >= 20).map((ticket)=>(
+                <div>{ticket.price}</div>
+              ))}
+            </div>
+            <button onClick={test}>test</button>
+            
+          </div>
+          <div>
+
+          </div>
+        </div>
       </div>
     </>
   );
