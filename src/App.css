@@ -42,10 +42,26 @@ body {
     border-bottom-left-radius: 10px;
 }
 
+.currentFindFree{
+    text-align: center;
+    width: 50%;
+    border-top: 1px solid rgb(170, 170, 243);
+    border-left: 1px solid rgb(170, 170, 243);
+    border-bottom: 1px solid rgb(170, 170, 243);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: rgb(170, 170, 243);
+}
+
 .freeBlock:hover{
     background-color: rgb(170, 170, 243);
     cursor: pointer;
 }
+
 
 .fasterBlock:hover{
     background-color: rgb(170, 170, 243);
@@ -61,6 +77,19 @@ body {
     justify-content: center;
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
+}
+
+.currentFindFaster{
+    text-align: center;
+    width: 50%;
+    border: 1px solid rgb(170, 170, 243);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: rgb(170, 170, 243);
 }
 
 .timeCheckBlock{
@@ -79,8 +108,6 @@ body {
     height: 30px;
     display: flex;
     align-items: center;
-
-
 }
 
 .HoverDiv:hover {
@@ -92,3 +119,106 @@ body {
     display: flex;
     justify-content: center;
 }
+
+.pages{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.page{
+    border: 1px solid rgb(170, 170, 243);
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 10px 10px;
+    background-color: white;
+}
+.currentPage{
+    background-color: rgb(170, 170, 243);
+    border-radius: 10px;
+    margin: 10px 10px;
+    padding: 10px 20px;
+    border: 1px solid rgb(170, 170, 243);
+}
+.page:hover{
+    background-color: rgb(170, 170, 243);
+    cursor: pointer;
+}
+
+.showMore{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 1px solid rgb(170, 170, 243);
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+    height: 50px;
+}
+.showMore:hover{
+    background-color: rgb(170, 170, 243);
+    cursor: pointer;
+}
+
+.ticket{
+    width: 100%;
+    height: 184px;
+    background-color: white;
+    box-shadow: 0 0 3px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    margin-top: 18px;
+}
+
+.ticketHeader{
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.price{
+    font-size: 24px;
+    color: rgb(114, 114, 235);
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.logoCompany{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+.firstInfoBlock{
+    margin-top: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.dateFirst{
+    width: 90px;
+    height: 40px;
+    margin-left: 20px;
+}
+
+.secondInfoBlock{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.timeFly{
+    width: 80px;
+}
+.stops{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    margin-right: 20px;
+    /* width: 140px; */
+}
+
