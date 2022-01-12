@@ -13,6 +13,7 @@ function App() {
   const tickets = useSelector((state)=>state.tickets)
   const currentPage = useSelector(state => state.currentPage) 
   const findChekbox = useSelector(state => state.findChekbox)
+  const check = useSelector(state => state.check)
   
 
   
@@ -31,15 +32,36 @@ function App() {
 
   function freeFunc(){
     dispatch({type:'findTicket', payload:'free'})
-    // const freeTickets = tickets.map((ticket)=>{
-    //   ticket.price.sort(function(a, b) {
-    //     return a - b;
-    //   })
-    // })
-    // dispatch({ type: 'searchTickets', payload: freeTickets })
+    const freeTickets = tickets.sort(function(a, b) {
+      return parseFloat(a.price) - parseFloat(b.price);
+    })
+    dispatch({ type: 'searchTickets', payload: freeTickets })
   }
 
-  console.log(tickets)
+  function fasterFunc(){
+    dispatch({type:'findTicket', payload:'faster'})
+    const fasterTickets = tickets.sort(function(a, b) {
+      return parseFloat(a.segments[0].duration) - parseFloat(b.segments[0].duration);
+    })
+    dispatch({ type: 'searchTickets', payload: fasterTickets }) 
+  }
+
+  function checking(e) {
+    dispatch({type:'check', payload:e.target.value})
+    // if  (check == 'Not') {
+    //   const chekFind = tickets.sort(function(a, b) {
+    //     return a.segments[0].stops.length - b.segments[0].stops.length;
+    //   })
+    //   dispatch({ type: 'searchTickets', payload: chekFind }) 
+    // } else if (check == '1'){
+    //   const chekFind = tickets.sort(function(a) {
+    //     return a.segments[0].stops.length == 1;
+    //   })
+    //   dispatch({ type: 'searchTickets', payload: chekFind }) 
+    // }
+    
+  }
+  console.log(check)
 
 
   if (!tickets) return <div>Loading...</div>;
@@ -49,27 +71,29 @@ function App() {
       <div className='mainBlock'>
         <div className='checkBlock'>
           <p className='titleCheckBlock'>КОЛИЧЕСТВО ПЕРЕСАДОК</p>
-          <div className='HoverDiv'>
-          <input className='inputCheckBlock'  name='All' type="checkbox" /> <label htmlFor='All'>Все</label>
+          <form>
+          <div className='HoverDiv' >
+          <input value='All' className='inputCheckBlock'  name='radioButton' type="radio" onClick={checking}/> <label htmlFor='inputCheckBlock'>Все</label>
           </div>
-          <div className='HoverDiv'>
-          <input className='inputCheckBlock'  name='BezPerecadki' type="checkbox" /> <label htmlFor='BezPerecadki'>Без пересадок</label>
+          <div className='HoverDiv' >
+          <input value='Not' className='inputCheckBlock'  name='radioButton' type="radio" onClick={checking}/> <label htmlFor='inputCheckBlock'>Без пересадок</label>
           </div>
-          <div className='HoverDiv'>
-          <input className='inputCheckBlock'  name='1' type="checkbox" /> <label htmlFor='1'>1 пересадка</label>
+          <div className='HoverDiv' >
+          <input value='1' className='inputCheckBlock'  name='radioButton' type="radio" onClick={checking}/> <label htmlFor='inputCheckBlock'>1 пересадка</label>
           </div>
-          <div className='HoverDiv'>
-          <input className='inputCheckBlock'  name='2' type="checkbox" /> <label htmlFor='2'>2 пересадки</label>
+          <div className='HoverDiv' >
+          <input value='2' className='inputCheckBlock'  name='radioButton' type="radio" onClick={checking}/> <label htmlFor='inputCheckBlock'>2 пересадки</label>
           </div>
-          <div className='HoverDiv'>
-          <input className='inputCheckBlock'  name='3' type="checkbox" /> <label htmlFor='3'>3 пересадки</label>
+          <div className='HoverDiv' >
+          <input value='3' className='inputCheckBlock'  name='radioButton' type="radio" onClick={checking}/> <label htmlFor='inputCheckBlock'>3 пересадки</label>
           </div>
+          </form>
         </div>
         <div>
           <div className='ticketsBlock'> 
             <div className='timeCheckBlock'>
               <div className={findChekbox == 'free'? 'currentFindFree' : 'freeBlock'} onClick={freeFunc}>САМЫЙ ДЕШЕВЫЙ</div>
-              <div className={findChekbox == 'faster'? 'currentFindFaster' : 'fasterBlock'} onClick={()=>dispatch({type:'findTicket', payload:'faster'})}>САМЫЙ БЫСТРЫЙ</div>
+              <div className={findChekbox == 'faster'? 'currentFindFaster' : 'fasterBlock'} onClick={fasterFunc}>САМЫЙ БЫСТРЫЙ</div>
             </div>
             <div>
               {tickets.slice(0, currentPage).map((ticket)=>(
